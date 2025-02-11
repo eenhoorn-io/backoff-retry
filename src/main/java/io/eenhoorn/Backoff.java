@@ -18,11 +18,47 @@ package io.eenhoorn;
 
 public class Backoff {
 
-    public final long delay;
 
-    public final long finalDelay;
+    private long stop;
 
+    private long wait;
 
+    private long block;
 
+    private long timeLimit;
+
+    private long waitRetry;
+
+    public Backoff stop(long stop) {
+        this.stop = stop;
+        return this;
+    }
+
+    public Backoff waitLimit(long wait) {
+        this.wait = wait;
+        return this;
+    }
+
+    public Backoff block(long block) {
+        this.block = block;
+        return this;
+    }
+
+    public Backoff timeLimit(long timeLimit) {
+        this.timeLimit = timeLimit;
+        return this;
+    }
+
+    public Backoff waitRetry(long waitRetry) {
+        this.waitRetry = waitRetry;
+        return this;
+    }
+
+    private Backoff() {
+    }
+
+    public Backoff builder() {
+        return new Backoff();
+    }
 
 }
